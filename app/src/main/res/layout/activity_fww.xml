@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.inc.mountzoft.funwithwords.fww">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/play_btn"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="210dp"
+            android:onClick="playButtonFunction"
+            android:text="Play" />
+        <Button
+            android:id="@+id/high_score_btn"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="290dp"
+            android:onClick="highScoreButtonFunction"
+            android:text="High Score"/>
+        <Button
+            android:id="@+id/help_btn"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="370dp"
+            android:onClick="helpButtonFunction"
+            android:text="Help"/>
+        <Button
+            android:id="@+id/cretits_btn"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="450dp"
+            android:onClick="creditsButtonFunction"
+            android:text="Credits"/>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
