@@ -3,6 +3,8 @@ package com.inc.mountzoft.funwithwords;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 
@@ -12,11 +14,9 @@ public class splashscreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
-        LinearLayout ll = (LinearLayout) findViewById(R.id.splashLayout);
-        ll.setBackgroundResource(R.drawable.splash);
-        
         Thread timerThread = new Thread(){
             public void run(){
                 try{
