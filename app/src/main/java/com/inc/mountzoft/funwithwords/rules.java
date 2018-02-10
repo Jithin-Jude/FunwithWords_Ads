@@ -35,7 +35,7 @@ public class rules extends AppCompatActivity {
         startActivity(intent);
     }
     public void goAheadButtonFunction(View view){
-        Button button = (Button) findViewById(R.id.goAdeadBtn);
+        Button button = (Button) findViewById(R.id.goAheadBtn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 
         // Use bounce interpolator with amplitude 0.2 and frequency 20

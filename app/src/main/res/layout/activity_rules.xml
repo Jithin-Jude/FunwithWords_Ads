@@ -27,16 +27,16 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:textColor="#fffd47"
+            android:textColor="#7bfaff"
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/goAdeadBtn"
+            android:id="@+id/goAheadBtn"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginTop="500dp"
             android:background="@drawable/button_bg"
-            android:text="Go Adead"
+            android:text="Go Ahead"
             android:onClick="goAheadButtonFunction"
             android:layout_centerHorizontal="true" />
 
