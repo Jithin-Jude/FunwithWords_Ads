@@ -40,6 +40,7 @@ public class user_input extends AppCompatActivity {
         startActivity(intent);
     }
     public void submittButtonFunction(View view){
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.submittBtn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 

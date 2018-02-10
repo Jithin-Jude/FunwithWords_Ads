@@ -20,7 +20,7 @@ public class splashscreen extends Activity {
         Thread timerThread = new Thread(){
             public void run(){
                 try{
-                    sleep(200);
+                    sleep(100);
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{

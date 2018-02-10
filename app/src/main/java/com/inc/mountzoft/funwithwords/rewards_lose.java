@@ -88,6 +88,7 @@ public class rewards_lose extends AppCompatActivity {
     }
 
     public void exit_to_home_ButtonFunction(View view) {
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.exit_to_home);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 

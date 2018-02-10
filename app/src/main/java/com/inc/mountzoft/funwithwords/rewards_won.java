@@ -100,6 +100,7 @@ public class rewards_won extends AppCompatActivity {
         startActivity(intent);
     }
     public void i_cant_continue_ButtonFunction(View view) {
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.i_cant_continue);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 
@@ -117,6 +118,7 @@ public class rewards_won extends AppCompatActivity {
     }
 
     public void go_continue_ButtonFunction(View view) {
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.go_continue);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 

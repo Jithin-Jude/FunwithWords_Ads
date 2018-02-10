@@ -97,6 +97,7 @@ public class result extends AppCompatActivity {
         }
     }
     public void Your_Status_ButtonFunction(View view){
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.Your_Status_Btn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 

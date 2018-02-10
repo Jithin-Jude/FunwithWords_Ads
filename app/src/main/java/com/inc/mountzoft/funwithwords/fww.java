@@ -22,8 +22,6 @@ import java.io.FileOutputStream;
 
 public class fww extends AppCompatActivity {
 
-    MediaPlayer btnBgm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +31,11 @@ public class fww extends AppCompatActivity {
 
         try {
             AssetFileDescriptor btnMusic = getAssets().openFd("btn_bgm.wav");
-            btnBgm = new MediaPlayer();
-            btnBgm.setDataSource(btnMusic.getFileDescriptor(), btnMusic.getStartOffset(), btnMusic.getLength());
-            btnBgm.prepare();
+            global_var.btnBgm = new MediaPlayer();
+            global_var.btnBgm.setDataSource(btnMusic.getFileDescriptor(), btnMusic.getStartOffset(), btnMusic.getLength());
+            global_var.btnBgm.prepare();
         }catch(Exception e){
             e.printStackTrace();
-            Toast.makeText(this, "Error loading file ! Please Choose from File Exploer", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -49,7 +46,7 @@ public class fww extends AppCompatActivity {
     }
 
     public void highScoreButtonFunction(View view) {
-        btnBgm.start();
+        global_var.btnBgm.start();
         Button button = (Button)findViewById(R.id.high_score_btn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 
@@ -75,7 +72,7 @@ public class fww extends AppCompatActivity {
     }
 
     public void playButtonFunction(View view) {
-        btnBgm.start();
+        global_var.btnBgm.start();
         Button button = (Button)findViewById(R.id.play_btn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 
@@ -97,7 +94,7 @@ public class fww extends AppCompatActivity {
         startActivity(intent);
     }
     public void helpButtonFunction(View view) {
-        btnBgm.start();
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.help_btn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 
@@ -120,7 +117,7 @@ public class fww extends AppCompatActivity {
     }
 
     public void creditsButtonFunction(View view) {
-        btnBgm.start();
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.cretits_btn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 

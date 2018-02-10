@@ -35,6 +35,7 @@ public class rules extends AppCompatActivity {
         startActivity(intent);
     }
     public void goAheadButtonFunction(View view){
+        global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.goAheadBtn);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
 
