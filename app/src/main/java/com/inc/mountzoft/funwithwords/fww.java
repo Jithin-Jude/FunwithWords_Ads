@@ -2,6 +2,8 @@ package com.inc.mountzoft.funwithwords;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import java.io.FileOutputStream;
 
 public class fww extends AppCompatActivity {
 
+    MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,17 @@ public class fww extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_fww);
+
+        try {
+            AssetFileDescriptor afd = getAssets().openFd("root_menu_bgm.mp3");
+            player = new MediaPlayer();
+            player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            player.prepare();
+        }catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, "Error loading file ! Please Choose from File Exploer", Toast.LENGTH_LONG).show();
+        }
+        player.start();
 
     }
 
