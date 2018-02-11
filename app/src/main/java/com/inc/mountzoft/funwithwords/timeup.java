@@ -12,6 +12,7 @@ public class timeup extends AppCompatActivity {
     int level;
     void go(){
 
+        global_var.timeupBgm.stop();
         Intent intent = new Intent(this, user_input.class);
         intent.putExtra("givenWrds_display",givenWrds_display);
         intent.putExtra("level_pass",level);
@@ -24,6 +25,7 @@ public class timeup extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_timeup);
+        global_var.timeupBgm.start();
 
         Intent intent = getIntent();
         givenWrds_display = intent.getStringExtra("givenWrds_display");

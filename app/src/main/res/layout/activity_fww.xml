@@ -22,44 +22,53 @@
 
         <Button
             android:id="@+id/play_btn"
-            android:layout_width="110dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/button_bg_main"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="210dp"
             android:onClick="playButtonFunction"
             android:text="Play" />
         <Button
             android:id="@+id/high_score_btn"
-            android:layout_width="110dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/button_bg_main"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="290dp"
             android:onClick="highScoreButtonFunction"
             android:text="High Score"/>
         <Button
             android:id="@+id/help_btn"
-            android:layout_width="110dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:background="@drawable/button_bg"
+            android:background="@drawable/button_bg_main"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="370dp"
             android:onClick="helpButtonFunction"
             android:text="Help"/>
         <Button
             android:id="@+id/cretits_btn"
-            android:layout_width="110dp"
-            android:layout_height="40dp"
-            android:background="@drawable/button_bg"
-            android:layout_alignParentTop="true"
+            android:layout_width="80dp"
+            android:layout_height="85dp"
+            android:background="@drawable/info_btn_bg"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="270dp"
+            android:onClick="creditsButtonFunction"/>
+        <TextView
+            android:id="@+id/moto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="450dp"
-            android:onClick="creditsButtonFunction"
-            android:text="Credits"/>
+            android:layout_marginTop="440dp"
+            android:text="Boosting your brain power"
+            android:textColor="@color/cyan"
+            android:fontFamily="sans-serif-thin"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

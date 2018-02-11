@@ -8,5 +8,5 @@ import android.media.MediaPlayer;
 
 public class global_var {
     public static int tot_pts;
-    public static MediaPlayer btnBgm;
+    public static MediaPlayer btnBgm, wonBgm, loseBgm, timeupBgm;
 }

@@ -28,6 +28,7 @@ public class rewards_lose extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_rewards_lose);
+        global_var.loseBgm.start();
 
         Intent intent = getIntent();
         level = intent.getIntExtra("level_pass", 0);
@@ -88,6 +89,7 @@ public class rewards_lose extends AppCompatActivity {
     }
 
     public void exit_to_home_ButtonFunction(View view) {
+        global_var.loseBgm.stop();
         global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.exit_to_home);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);

@@ -26,6 +26,7 @@
             android:background="#80000000"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-thin"
             android:gravity="center"
             android:textColor="#7bfaff"
             android:textSize="20sp" />

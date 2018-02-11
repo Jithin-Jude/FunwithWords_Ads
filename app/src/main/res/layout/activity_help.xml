@@ -26,6 +26,7 @@
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-thin"
             android:text="When you touch the\n
 Play button, you will be presented\n
 with a bunch of words. After the time has elapsed

@@ -29,6 +29,7 @@ public class rewards_won extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_rewards_won);
+        global_var.wonBgm.start();
 
         TextView tx = (TextView)findViewById(R.id.won);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Airplanes in the Night Sky.ttf");
@@ -100,6 +101,7 @@ public class rewards_won extends AppCompatActivity {
         startActivity(intent);
     }
     public void i_cant_continue_ButtonFunction(View view) {
+        global_var.wonBgm.stop();
         global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.i_cant_continue);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
@@ -118,6 +120,7 @@ public class rewards_won extends AppCompatActivity {
     }
 
     public void go_continue_ButtonFunction(View view) {
+        global_var.wonBgm.stop();
         global_var.btnBgm.start();
         Button button = (Button) findViewById(R.id.go_continue);
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.animator.bounce);
