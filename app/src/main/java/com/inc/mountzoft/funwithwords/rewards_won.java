@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,10 +18,12 @@ import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Locale;
 
 public class rewards_won extends AppCompatActivity {
 
     public TextView wonInfo;
+    public TextToSpeech congrats;
     int level, numCorrectWrds, pts;
 
     @Override
@@ -61,7 +64,6 @@ public class rewards_won extends AppCompatActivity {
                 FileOutputStream fos = openFileOutput(file, Context.MODE_PRIVATE);
                 fos.write(textData.getBytes());
                 fos.close();
-                Toast.makeText(this, "File dosen't exist, new file created !", Toast.LENGTH_SHORT).show();
             } catch (Exception e2){
                 e2.printStackTrace();
                 Toast.makeText(this, "Error occurred !", Toast.LENGTH_SHORT).show();
@@ -77,6 +79,19 @@ public class rewards_won extends AppCompatActivity {
                 fos.write(overwrite.getBytes());
                 fos.close();
                 Toast.makeText(this, "Congratulations new record created !", Toast.LENGTH_SHORT).show();
+
+                congrats =new TextToSpeech(rewards_won.this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if(status == TextToSpeech.SUCCESS) {
+                            congrats.setLanguage(Locale.ENGLISH);
+                        }else {
+                            Toast.makeText(rewards_won.this, "language not supported !", Toast.LENGTH_SHORT).show();
+                        }
+                        congrats.speak("Congratulations new record created !", TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                });
+
             } catch (Exception e2){
                 e2.printStackTrace();
                 Toast.makeText(this, "Error occurred !", Toast.LENGTH_SHORT).show();
@@ -89,6 +104,15 @@ public class rewards_won extends AppCompatActivity {
 
         wonInfo = (TextView) this.findViewById(R.id.won);
         wonInfo.setText("Congratulations, you won this level.\nYou remembered "+String.valueOf(numCorrectWrds) +" out of "+String.valueOf(level*5)+" words.\nScore in this level : " + String.valueOf(pts) + " points\nTotal score : " + String.valueOf(global_var.tot_pts) + " points\n\nNow you can proceed to next level");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(congrats != null){
+            congrats.shutdown();
+        }
     }
 
     public void delayRun1() {

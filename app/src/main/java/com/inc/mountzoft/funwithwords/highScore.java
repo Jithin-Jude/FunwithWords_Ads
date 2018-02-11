@@ -39,11 +39,9 @@ public class highScore extends AppCompatActivity {
             try{
                 FileOutputStream fos = openFileOutput(file, Context.MODE_PRIVATE);
                 fos.write(textData.getBytes());
-                fos.close();;
-                Toast.makeText(this, "File dosen't exist, new file created !", Toast.LENGTH_SHORT).show();
+                fos.close();
             } catch (Exception e2){
                 e2.printStackTrace();
-                Toast.makeText(this, "Error creating file !", Toast.LENGTH_SHORT).show();
             }
         }
 

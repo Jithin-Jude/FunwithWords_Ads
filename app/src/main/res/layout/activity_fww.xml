@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="440dp"
+            android:layout_marginTop="480dp"
             android:text="Boosting your brain power"
             android:textColor="@color/cyan"
             android:fontFamily="sans-serif-thin"
