@@ -3,6 +3,7 @@ package com.inc.mountzoft.funwithwords;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +17,12 @@ import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Locale;
 
 public class rewards_lose extends AppCompatActivity {
 
     public TextView loseInfo;
+    public TextToSpeech congrats;
     int level, numCorrectWrds, pts;
 
     @Override
@@ -55,7 +58,6 @@ public class rewards_lose extends AppCompatActivity {
                 FileOutputStream fos = openFileOutput(file, Context.MODE_PRIVATE);
                 fos.write(textData.getBytes());
                 fos.close();
-                Toast.makeText(this, "File dosen't exist, new file created !", Toast.LENGTH_SHORT).show();
             } catch (Exception e2){
                 e2.printStackTrace();
                 Toast.makeText(this, "Error occurred !", Toast.LENGTH_SHORT).show();
@@ -70,7 +72,20 @@ public class rewards_lose extends AppCompatActivity {
                 FileOutputStream fos = openFileOutput(file, Context.MODE_PRIVATE);
                 fos.write(overwrite.getBytes());
                 fos.close();
-                Toast.makeText(this, "Congratulations new record created !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Sorry you lose. But you created a new record !\nBetter luck next time !", Toast.LENGTH_LONG).show();
+
+                congrats =new TextToSpeech(rewards_lose.this, new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if(status == TextToSpeech.SUCCESS) {
+                            congrats.setLanguage(Locale.ENGLISH);
+                        }else {
+                            Toast.makeText(rewards_lose.this, "language not supported !", Toast.LENGTH_SHORT).show();
+                        }
+                        congrats.speak("Sorry you lose. But you created a new record !\nBetter luck next time !", TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                });
+
             } catch (Exception e2){
                 e2.printStackTrace();
                 Toast.makeText(this, "Error occurred !", Toast.LENGTH_SHORT).show();
@@ -83,6 +98,16 @@ public class rewards_lose extends AppCompatActivity {
         loseInfo = (TextView) this.findViewById(R.id.lose);
         loseInfo.setText("Sorry you lose !\nTry again.\n\nScore in this level : " + pts + " points\nTotal score : " + global_var.tot_pts + " points");
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if(congrats != null){
+            congrats.shutdown();
+        }
+    }
+
     public void delayRun() {
         Intent intent = new Intent(this, fww.class);
         startActivity(intent);
