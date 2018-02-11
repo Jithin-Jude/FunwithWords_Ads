@@ -33,10 +33,6 @@
             android:noHistory="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".help"
-            android:noHistory="true"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".rules"
             android:noHistory="true"
             android:screenOrientation="portrait" />

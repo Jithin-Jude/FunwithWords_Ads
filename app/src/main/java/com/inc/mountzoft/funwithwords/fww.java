@@ -107,7 +107,7 @@ public class fww extends AppCompatActivity {
     }
 
     public void delayRun2() {
-        Intent intent = new Intent(this, help.class);
+        Intent intent = new Intent(this, Tutorial.class);
         startActivity(intent);
     }
     public void helpButtonFunction(View view) {
