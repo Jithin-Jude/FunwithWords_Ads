@@ -15,15 +15,23 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Locale;
 
-public class rewards_lose extends AppCompatActivity {
+public class rewards_lose extends AppCompatActivity implements RewardedVideoAdListener {
 
     public TextView loseInfo;
     public TextToSpeech congrats;
     int level, numCorrectWrds, pts;
+
+    private RewardedVideoAd mRewardedVideoAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,13 @@ public class rewards_lose extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_rewards_lose);
         global_var.loseBgm.start();
+
+
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
+
+        loadRewardedVideoAd();
+
 
         Intent intent = getIntent();
         level = intent.getIntExtra("level_pass", 0);
@@ -98,6 +113,79 @@ public class rewards_lose extends AppCompatActivity {
         loseInfo = (TextView) this.findViewById(R.id.lose);
         loseInfo.setText("Sorry you lose !\nTry again.\n\nScore in this level : " + pts + " points\nTotal score : " + global_var.tot_pts + " points");
     }
+
+    private void loadRewardedVideoAd() {
+        mRewardedVideoAd.loadAd("ca-app-pub-9873336567720966/1029458915",
+                new AdRequest.Builder().build());
+    }
+
+
+    public void startVideoAd(View view){
+        if (mRewardedVideoAd.isLoaded()) {
+            mRewardedVideoAd.show();
+        }
+    }
+
+
+    @Override
+    public void onRewarded(RewardItem reward) {
+        Toast.makeText(this, "Now you can proceed to next level !", Toast.LENGTH_SHORT).show();
+        // Reward the user.
+        Intent intent = new Intent(this, rules.class);
+        intent.putExtra("level_pass",level+1);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+        Toast.makeText(this, "Rewarded Video !",
+                Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+        Toast.makeText(this, "You closed Rewarded Video !", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int errorCode) {
+        Toast.makeText(this, "Sorry, there is no Reward video available !", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+        Toast.makeText(this, "Reward video available !", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+        Toast.makeText(this, "Reward Video Opened !", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+        Toast.makeText(this, "Watch video completely to go for next level !", Toast.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public void onResume() {
+        mRewardedVideoAd.resume(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mRewardedVideoAd.pause(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        mRewardedVideoAd.destroy(this);
+        super.onDestroy();
+    }
+
 
     @Override
     protected void onStop() {

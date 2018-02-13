@@ -21,6 +21,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
@@ -29,12 +33,21 @@ public class fww extends AppCompatActivity {
 
     TextView motoText;
 
+    AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_fww);
+
+        MobileAds.initialize(this, "ca-app-pub-9873336567720966~1916176935");
+
+        mAdView = (AdView)findViewById(R.id.adView);
+        //"8F5097A07FB0FAB6A9E77B6823AFD914" -- Test Device ID
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         motoText = (TextView) this.findViewById(R.id.moto);
 
