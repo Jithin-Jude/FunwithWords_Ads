@@ -79,6 +79,7 @@
             android:layout_alignParentBottom="true"
             ads:adSize="BANNER"
             ads:adUnitId="ca-app-pub-9873336567720966/5314041058">
+            <!--Original Ads ID used, so change it before testing the app-->
         </com.google.android.gms.ads.AdView>
 
     </RelativeLayout>

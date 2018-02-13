@@ -116,7 +116,7 @@ public class rewards_lose extends AppCompatActivity implements RewardedVideoAdLi
 
     private void loadRewardedVideoAd() {
         mRewardedVideoAd.loadAd("ca-app-pub-9873336567720966/1029458915",
-                new AdRequest.Builder().build());
+                new AdRequest.Builder().build());// Original Ads ID used, so change it before testing the app
     }
 
 
